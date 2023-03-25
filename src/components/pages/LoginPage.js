@@ -1,24 +1,25 @@
 import { useState } from "react";
 
 export function LoginPage() {
-    const [prenom, setPrenom] = useState("");
+    const [inputValue, setInputValue] = useState("");
 
     const handlechange = (e) => {
         const newValue = e.target.value;
-        setPrenom(newValue);
+        setInputValue(newValue);
     };
 
     const handleSubmit = () => {
-        alert(prenom)
-        setPrenom("")
+        alert(`Bonjour ${inputValue}`)
+        setInputValue("")
     }
 
     return (
         <div>
             <h1>Bienvenue chez nous</h1>
-            <p>Connectez-vous</p>
-            <form onSubmit={handleSubmit}>
-                <input value={prenom} onChange={(e) => handlechange(e)} type="text" placeholder="Entrez votre prénom" required />
+            <br/>
+            <h2>Connectez-vous</h2>
+            <form action="submit" onSubmit={handleSubmit}>
+                <input value={inputValue} onChange={(e) => handlechange(e)} type="text" placeholder="Entrez votre prénom" required />
                 <p>Please fill this field</p>
                 <button>Accéder à votre espace</button>
             </form>

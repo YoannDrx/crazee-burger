@@ -1,6 +1,4 @@
-import React from "react";
-
-function OrderPage() {
+export default function OrderPage() {
     return (
         <div>
             <h1>Bonjour Bob</h1>
@@ -8,5 +6,3 @@ function OrderPage() {
         </div>
     );
 }
-
-export default OrderPage;

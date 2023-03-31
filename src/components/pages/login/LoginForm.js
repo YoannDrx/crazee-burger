@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { theme } from "../../../theme";
 import styled from "styled-components";
-import {theme} from "../../../theme"
-
 
 export default function LoginForm() {
     const [username, setusername] = useState("");
@@ -20,32 +20,24 @@ export default function LoginForm() {
     };
 
     return (
-        <FormStyled action="submit" onSubmit={handleSubmit}>
+        <LoginFormStyled onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
             <br />
             <h2>Connectez-vous</h2>
-            <Input value={username} onChange={(e) => handlechange(e)} type="text" placeholder="Entrez votre prénom" required />
             <div>
-                <Button>Accéder à votre espace</Button>
-            </div>{" "}
-        </FormStyled>
+                <FaUserCircle />
+                <input value={username} onChange={(e) => handlechange(e)} type="text" placeholder="Entrez votre prénom" required />
+            </div>
+            <div>
+                <button>Accéder à votre espace</button>
+            </div>
+        </LoginFormStyled>
     );
 }
 
-// Style Components
-
-const FormStyled = styled.form`
-border: 1px solid red;
-text-align: center;
-`
-const Input = styled.input`
-width: 400px;
-height: 55px;
-`;
-
-const Button = styled.button`
-width: 400px;
-height: 55px;
-margin: 0;
-padding: 0;
+const LoginFormStyled = styled.div`
+    background: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;

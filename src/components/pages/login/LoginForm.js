@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
+import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../theme";
 import styled from "styled-components";
 
@@ -24,8 +24,8 @@ export default function LoginForm() {
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous</h2>
-            <div>
-                <FaUserCircle />
+            <div className="inputContainer">
+                <BsPersonCircle className="icon"/>
                 <input value={username} onChange={(e) => handlechange(e)} type="text" placeholder="Entrez votre prénom" required />
             </div>
             <div>
@@ -44,7 +44,7 @@ const LoginFormStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Amatic SC", sans-serif;
+    font-family: "Amatic SC", cursive, sans-serif;
     border-radius: 5px;
 
     hr {
@@ -63,5 +63,36 @@ const LoginFormStyled = styled.div`
         font-size: 36px;
         margin: 20px 10px 10px;
     }
-    
+
+    .inputContainer {
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        margin: 18px 0;
+        padding: 18px 24px;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .icon{
+        color: #93a2b1;
+        margin: 0 8px;
+        font-size: 15px;
+        min-width: 1em;
+    }
+
+    input{
+        border: none;
+        font-size: 15px;
+        width: 100%;
+        display: flex;
+        color: #17161a;
+    }
+
+    &::placeholder {
+        backgorund: white;
+        color: lightgrey;
+    }
 `;

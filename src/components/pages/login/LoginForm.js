@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import styled from "styled-components";
+import Input from "./Input";
+import { BsPersonCircle } from "react-icons/bs";
+
 
 export default function LoginForm() {
-    const [username, setusername] = useState("");
+    const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
-
-    const handlechange = (e) => {
-        const newValue = e.target.value;
-        setusername(newValue);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setusername("");
-        navigate(`/order/${username}`);
+        setInputValue("");
+        navigate(`/order/${inputValue}`);
+    };
+
+    const handlechange = (e) => {
+        setInputValue(e.target.value);
     };
 
     return (
@@ -24,10 +25,7 @@ export default function LoginForm() {
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous</h2>
-            <div className="inputContainer">
-                <BsPersonCircle className="icon" />
-                <input value={username} onChange={(e) => handlechange(e)} type="text" placeholder="Entrez votre prénom" required />
-            </div>
+            <Input value={inputValue} onChange={handlechange} placeholder={"Entrez votre prénom"} required Icon={<BsPersonCircle className="icon" />} />
             <button className="buttonContainer">
                 <span>Accéder à mon espace</span>
                 <IoChevronForward className="chevron" />
@@ -60,38 +58,6 @@ const LoginFormStyled = styled.form`
         color: white;
         font-size: 36px;
         margin: 20px 10px 10px;
-    }
-
-    .inputContainer {
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-        margin: 18px 0;
-        padding: 18px 24px;
-        white-space: nowrap;
-        width: 100%;
-    }
-
-    .icon {
-        color: #93a2b1;
-        margin: 0 8px;
-        font-size: 15px;
-        min-width: 1em;
-    }
-
-    input {
-        border: none;
-        font-size: 15px;
-        width: 100%;
-        display: flex;
-        color: #17161a;
-    }
-
-    &::placeholder {
-        backgorund: white;
-        color: lightgrey;
     }
 
     .buttonContainer {

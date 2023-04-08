@@ -14,7 +14,14 @@ export default function Logo() {
 const LogoStyled = styled.div`
 display: flex;
 align-items: center;
-transform: scale(2.5);
+
+@media (min-width: 768px) {
+    transform: scale(2.5);
+  }
+
+  @media (min-width: 400px) and (max-width: 768px) {
+    transform: scale(1.5);
+  }
 
 
 h1 {

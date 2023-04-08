@@ -7,12 +7,15 @@ export default function OrderPage(props) {
 
     return (
         <OrderPageStyled>
-            <di className="container">
-                <h1>Bonjour {username}</h1>
-                <Link to={"/"}>
-                    <button>Déconnexion</button>
-                </Link>
-            </di>
+            <div className="container">
+               <div className="navbar">Navbar
+                 <h1>Bonjour {username}</h1>
+                 <Link to={"/"}>
+                     <button>Déconnexion</button>
+                 </Link>
+               </div>
+               <div className="main">Main</div>
+            </div>
         </OrderPageStyled>
     );
 }
@@ -20,13 +23,25 @@ export default function OrderPage(props) {
 const OrderPageStyled = styled.div`
     background: orange;
     height: 100vh;
-    width: 1400px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     .container {
         background: red;
         height: 95vh;
+        width: 1400px;
+        display: flex;
+        flex-direction: column;
+
+        .navbar{
+            background: blue;
+            height: 10vh;
+        }
+
+        .main{
+            background: green;
+            flex: 1;
+        }
     }
 `;

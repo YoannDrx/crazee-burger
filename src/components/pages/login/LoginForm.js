@@ -5,6 +5,7 @@ import styled from "styled-components";
 import TextInput from "../../reusable-ui/TextInput";
 import { BsPersonCircle } from "react-icons/bs";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import { theme } from "../../../theme";
 
 export default function LoginForm() {
     const [inputValue, setInputValue] = useState("");
@@ -34,33 +35,33 @@ export default function LoginForm() {
 
 const LoginFormStyled = styled.form`
     margin: 0px auto;
-    padding: 2.5rem 2rem;
+    padding: 40px ${theme.spacing.lg};
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: "Amatic SC", cursive, sans-serif;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
 
     hr {
         width: 95%;
-        border: 1.5px solid #f56a2c;
-        margin-bottom: 40px;
+        border: 1.5px solid ${theme.colors.loginLine};
+        margin-bottom: ${theme.gridUnit * 5}px;
     }
 
     h1 {
-        color: white;
-        font-size: 48px;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.size.P5};
     }
 
     h2 {
-        color: white;
-        font-size: 36px;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.size.P4};
         margin: 20px 10px 10px;
     }
 
     .icon {
         margin-left: 10px;
-        font-size: 20px;
+        font-size: ${theme.fonts.size.P0};
         vertical-align: middle;
     }
 `;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function LoginPage() {
     return (
         <LoginPageStyled>
-            <Logo />
+            <Logo className={"logo-login-page"} />
             <LoginForm />
         </LoginPageStyled>
     );
@@ -29,5 +29,13 @@ const LoginPageStyled = styled.div`
         background: url("/images/burger-fries-background.jpg") no-repeat center center fixed rgba(0, 0, 0, 0.5);
         background-size: cover;
         background-blend-mode: darken;
+    }
+
+    .logo-login-page {
+        transform: scale(2.5);
+
+        @media (max-width: 610px) {
+            transform: scale(1.5);
+        }
     }
 `;

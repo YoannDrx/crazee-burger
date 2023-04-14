@@ -18,9 +18,9 @@ export default function Product({ index, imageSource, title, price }) {
 }
 
 const ProductStyled = styled.div`
-        background: red;
-        width: 240px;
-        height: 330px;
+    background: red;
+    width: 240px;
+    height: 330px;
 
     .image {
         width: 100px;
@@ -35,5 +35,4 @@ const ProductStyled = styled.div`
     .description {
         border: 3px solid fuchsia;
     }
-  
 `;

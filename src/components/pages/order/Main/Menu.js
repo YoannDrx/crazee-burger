@@ -35,20 +35,4 @@ const MenuStyled = styled.div`
     grid-column-gap: 10px;
     padding: 50px 50px 150px;
     justify-items: center;
-
-    .produit {
-        background: red;
-        width: 240px;
-        height: 330px;
-    }
-
-    .image {
-        border: 3px solid fuchsia;
-        width: 100px;
-        height: auto;
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
 `;

@@ -11,7 +11,14 @@ export default function Menu() {
             {menu.map((produit, index) => {
                 return (
                     <div className="produit" key={index}>
-                        <div className="produit-name">{produit.title}</div>
+                        <div className="image">
+                            <img src={produit.imageSource} alt="" />
+                        </div>
+                        <div className="info-text">
+                            <div className="title">{produit.title}</div>
+                            <div className="price">{produit.price}</div>
+                            <button className="add-button">Ajouter</button>
+                        </div>
                     </div>
                 );
             })}
@@ -23,14 +30,25 @@ const MenuStyled = styled.div`
     background: ${theme.colors.background_white};
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 60px;
+    grid-column-gap: 10px;
     padding: 50px 50px 150px;
     justify-items: center;
 
-    .produit{
+    .produit {
         background: red;
         width: 240px;
         height: 330px;
+    }
+
+    .image {
+        border: 3px solid fuchsia;
+        width: 100px;
+        height: auto;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 `;

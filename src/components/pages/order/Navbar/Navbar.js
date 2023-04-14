@@ -8,7 +8,7 @@ export default function Navbar({ username }) {
   return (
     <NavbarStyled>
       <Logo className="logo-order-page" onClick={() => refreshPage()} />
-      <NavbarRightSide username={username} />
+      <NavbarRightSide className="rightSide" username={username} />
     </NavbarStyled>
   )
 }
@@ -23,7 +23,6 @@ const NavbarStyled = styled.nav`
   border-top-left-radius: ${theme.borderRadius.extraRound};
   border-top-right-radius: ${theme.borderRadius.extraRound};
   border-bottom: 1px solid ${theme.colors.greyLight};
-  /* align-items: center; */
 
   .logo-order-page {
     cursor: pointer;

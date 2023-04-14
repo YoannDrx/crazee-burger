@@ -4,11 +4,17 @@ import Profile from "./Profile";
 import ToggleButton from "./ToggleButton";
 import { ToastContainer, toast } from "react-toastify";
 import { theme } from "../../../../theme";
-import { FaUserSecret } from "react-icons/fa";
+import { FaUserSecret, FaBars } from "react-icons/fa";
 import { useState } from "react";
+import "daisyui/dist/full.css";
 
 export default function NavbarRightSide({ username }) {
     const [isAdminMode, setIsAdminMode] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleModalToggle = () => {
+        setIsModalOpen(!isModalOpen);
+    };
 
     const handleAdminToggle = () => {
         if (!isAdminMode) {
@@ -37,7 +43,30 @@ export default function NavbarRightSide({ username }) {
             <div className="admin-button">
                 <ToggleButton isChecked={isAdminMode} onToggle={handleAdminToggle} />
             </div>
-            <Profile username={username} />
+            <div className="profile">
+                <Profile username={username} />
+            </div>
+            <FaBars className="menu-icon" onClick={handleModalToggle} />
+
+            {isModalOpen && (
+                <div className="fixed inset-0 flex items-center justify-center z-50">
+                    <div className="modal modal-open">
+                        <div className="modal-box">
+                            <div className="flex flex-col items-center justify-center">
+                                <Profile username={username} />
+                                <div className="mt-4">
+                                    <ToggleButton isChecked={isAdminMode} onToggle={handleAdminToggle} />
+                                </div>
+                            </div>
+                            <div className="modal-action mt-4">
+                                <button onClick={handleModalToggle} className="btn btn-secondary">
+                                    Fermer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </NavbarRightSideStyled>
     );
 }
@@ -48,11 +77,7 @@ const NavbarRightSideStyled = styled.div`
     padding-right: 50px;
 
     .admin-button {
-        margin-right: 20px;
-    }
-
-    .profile {
-        background: yellow;
+        margin-right: 50px;
     }
 
     .toaster {
@@ -70,6 +95,22 @@ const NavbarRightSideStyled = styled.div`
         }
         div {
             line-height: 1.3em;
+        }
+    }
+
+    .menu-icon {
+        display: none;
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 767px) {
+        .menu-icon {
+            display: block;
+        }
+
+        .admin-button,
+        .profile {
+            display: none;
         }
     }
 `;

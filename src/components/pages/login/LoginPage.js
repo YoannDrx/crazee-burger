@@ -1,41 +1,39 @@
-import Logo from "../../reusable-ui/Logo";
-import LoginForm from "./LoginForm";
-import styled from "styled-components";
+import styled from "styled-components"
+import Logo from "../../reusable-ui/Logo"
+import LoginForm from "./LoginForm"
 
 export default function LoginPage() {
-    return (
-        <LoginPageStyled>
-            <Logo className={"logo-login-page"} />
-            <LoginForm />
-        </LoginPageStyled>
-    );
+  return (
+    <LoginPageStyled>
+      <Logo className={"logo-login-page"} />
+      <LoginForm />
+    </LoginPageStyled>
+  )
 }
 
 const LoginPageStyled = styled.div`
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    ::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        background: url("/images/burger-fries-background.jpg") no-repeat center center fixed rgba(0, 0, 0, 0.5);
-        background-size: cover;
-        background-blend-mode: darken;
-    }
+  ::before {
+    content: "";
+    background: url("/images/burger-and-fries-background.jpg") rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: darken;
 
-    .logo-login-page {
-        transform: scale(2.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
 
-        @media (max-width: 610px) {
-            transform: scale(1.5);
-        }
-    }
-`;
+  .logo-login-page {
+    transform: scale(2.5);
+  }
+`

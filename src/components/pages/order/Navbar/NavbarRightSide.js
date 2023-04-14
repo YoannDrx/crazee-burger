@@ -1,26 +1,25 @@
-import styled from 'styled-components';
-import Profile from "./Profile";
+import styled from "styled-components"
+import Profile from "./Profile"
 
 export default function NavbarRightSide({ username }) {
-    return (
-        <NabarRightSideStyled className="rightSide">
-            {/* <div className="admin-button">Admin button</div> */}
-            <Profile username={username}/>
-        </NabarRightSideStyled>
-    );
+  return (
+    <NavbarRightSideStyled className="right-side">
+      {/* <div className="admin-button">Admin Button</div> */}
+      <Profile username={username} />
+    </NavbarRightSideStyled>
+  )
 }
 
-const NabarRightSideStyled = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 50px;
-    
-    /* .admin-button {
-        background: lightblue;
-    } */
+const NavbarRightSideStyled = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
 
-    .profile {
-        background: yellow;
-    }
-`;
+  /* .admin-button {
+    background: lightblue;
+  } */
+
+  .profile {
+    background: yellow;
+  }
+`

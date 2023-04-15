@@ -27,12 +27,11 @@ const OrderPageStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     .container {
         background: red;
         height: 95vh;
         width: 1400px;
-        min-width: 372px;
         display: flex;
         flex-direction: column;
         border-radius: ${theme.borderRadius.extraRound};

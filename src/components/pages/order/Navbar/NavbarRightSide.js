@@ -6,111 +6,154 @@ import { ToastContainer, toast } from "react-toastify";
 import { theme } from "../../../../theme";
 import { FaUserSecret, FaBars } from "react-icons/fa";
 import { useState } from "react";
-import "daisyui/dist/full.css";
 
 export default function NavbarRightSide({ username }) {
-    const [isAdminMode, setIsAdminMode] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleModalToggle = () => {
-        setIsModalOpen(!isModalOpen);
-    };
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-    const handleAdminToggle = () => {
-        if (!isAdminMode) {
-            notify();
-        }
-        setIsAdminMode(!isAdminMode);
-    };
+  const handleAdminToggle = () => {
+    if (!isAdminMode) {
+      notify();
+    }
+    setIsAdminMode(!isAdminMode);
+  };
 
-    const notify = () => {
-        toast.info("Mode admin activé", {
-            icon: <FaUserSecret size={30} />,
-            theme: "dark",
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    };
+  const notify = () => {
+    toast.info("Mode admin activé", {
+      icon: <FaUserSecret size={30} />,
+      theme: "dark",
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
-    return (
-        <NavbarRightSideStyled className="right-side">
-            <ToastContainer className="toaster" bodyClassName="body-toast" />
-            <div className="admin-button">
-                <ToggleButton isChecked={isAdminMode} onToggle={handleAdminToggle} />
+  return (
+    <NavbarRightSideStyled className="right-side">
+      <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <div className="admin-button">
+        <ToggleButton isChecked={isAdminMode} onToggle={handleAdminToggle} labelIfChecked={"DÉSACTIVER LE MODE ADMIN"} labelIfUnchecked={"ACTIVER LE MODE ADMIN"}/>
+      </div>
+      <div className="profile">
+        <Profile username={username} />
+      </div>
+      <FaBars className="menu-icon" onClick={handleModalToggle} />
+
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <Profile username={username} />
+            <div className="toggle">
+              <ToggleButton isChecked={isAdminMode} onToggle={handleAdminToggle} />
             </div>
-            <div className="profile">
-                <Profile username={username} />
-            </div>
-            <FaBars className="menu-icon" onClick={handleModalToggle} />
-
-            {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <div className="modal modal-open">
-                        <div className="modal-box">
-                            <div className="flex flex-col items-center justify-center">
-                                <Profile username={username} />
-                                <div className="mt-4">
-                                    <ToggleButton isChecked={isAdminMode} onToggle={handleAdminToggle} />
-                                </div>
-                            </div>
-                            <div className="modal-action mt-4">
-                                <button onClick={handleModalToggle} className="btn btn-secondary">
-                                    Fermer
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </NavbarRightSideStyled>
-    );
+            <button onClick={handleModalToggle} className="btn-close">
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+    </NavbarRightSideStyled>
+  );
 }
 
 const NavbarRightSideStyled = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+
+  .admin-button {
+    margin-right: 50px;
+  }
+
+  .toaster {
+    max-width: 300px;
+  }
+
+  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
+    background: ${theme.colors.background_dark};
+  }
+
+  .body-toast {
+    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
+      margin-right: 20px;
+      margin-left: 5px;
+    }
+    div {
+      line-height: 1.3em;
+    }
+  }
+
+  .menu-icon {
+    display: none;
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    .menu-icon {
+      display: block;
+      margin: 0;
+    }
+
+    .admin-button,
+    .profile {
+      display: none;
+    }
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
-    padding-right: 50px;
+    justify-content: center;
+    z-index: 50;
+}
 
-    .admin-button {
-        margin-right: 50px;
-    }
+.modal-content {
+background-color: white;
+border: 3px solid ${theme.colors.primary};
+border-radius: 5px;
+padding: 30px;
+max-width: 400px;
+width: 80%;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
 
-    .toaster {
-        max-width: 300px;
-    }
+.btn-close {
+background-color: #ccc;
+border: none;
+color: white;
+padding: 8px 16px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 20px 0;
+cursor: pointer;
+border-radius: 5px;
+}
 
-    .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-        background: ${theme.colors.background_dark};
-    }
+.btn-close:hover {
+background-color: ${theme.colors.primary};
+}
 
-    .body-toast {
-        .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-            margin-right: 20px;
-            margin-left: 5px;
-        }
-        div {
-            line-height: 1.3em;
-        }
-    }
-
-    .menu-icon {
-        display: none;
-        font-size: 1.5rem;
-    }
-
-    @media (max-width: 767px) {
-        .menu-icon {
-            display: block;
-        }
-
-        .admin-button,
-        .profile {
-            display: none;
-        }
-    }
+.toggle{
+    margin-top: 20px;
+}
 `;
+
+

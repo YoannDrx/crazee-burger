@@ -31,7 +31,7 @@ const LogoStyled = styled.div`
     object-fit: contain;
     object-position: center;
     height: 60px;
-    width: 80px; // for Safari and Firefox
+    width: 80px;
     margin: 0 ${theme.gridUnit / 2}px;
   }
 `

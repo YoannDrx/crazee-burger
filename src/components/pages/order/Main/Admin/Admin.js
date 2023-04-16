@@ -7,7 +7,6 @@ export default function Admin() {
     )
 }
 
-
 const AdminStyled = styled.div`
             background: red;
             height: 250px;

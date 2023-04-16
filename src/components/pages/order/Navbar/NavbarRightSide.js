@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
 import Profile from "./Profile";
-import ToggleButton from "./ToggleButton";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 import { theme } from "../../../../theme";
 import { FaUserSecret, FaBars } from "react-icons/fa";
 import { useState } from "react";

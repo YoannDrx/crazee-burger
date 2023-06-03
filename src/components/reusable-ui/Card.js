@@ -37,7 +37,6 @@ const CardStyled = styled.div`
     padding-bottom: 10px;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     border-radius: ${theme.borderRadius.extraRound};
-    border: 3px solid red;
     position: relative;
 
     .delete-icon {

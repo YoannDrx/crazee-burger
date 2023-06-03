@@ -20,7 +20,6 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-    border: 3px solid green;
     background: ${theme.colors.background_white};
     flex: 1;
     height: calc(95vh - 10vh);

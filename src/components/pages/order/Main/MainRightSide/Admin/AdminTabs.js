@@ -16,8 +16,8 @@ export default function AdminTabs() {
     setIsCollapsed(false) // tu m'ouvres le pannel
     setCurrentTabSelected(tabSelected)
   }
-
-  const tabs = tabsConfig
+  
+  const tabs = tabsConfig 
 
   // affichage
   return (

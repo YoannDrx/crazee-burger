@@ -8,7 +8,7 @@ import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 export default function OrderPage() {
     // state
-    const [isModeAdmin, setIsModeAdmin] = useState(true);
+    const [isModeAdmin, setIsModeAdmin] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [currentTabSelected, setCurrentTabSelected] = useState("add");
     const [menu, setMenu] = useState(fakeMenu.LARGE);

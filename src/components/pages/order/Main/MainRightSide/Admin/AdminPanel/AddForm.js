@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../../context/OrderContext";
 
-const emptyProduct = {
+const EMPTY_PRODUCT = {
     id: "",
     title: "",
     imageSource: "",
@@ -11,7 +11,7 @@ const emptyProduct = {
 
 export default function AddForm() {
     const { handleAdd } = useContext(OrderContext);
-    const [newProduct, setNewProduct] = useState(emptyProduct);
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ export default function AddForm() {
         };
 
         handleAdd(newProductToAdd);
-        setNewProduct(emptyProduct);
+        setNewProduct(EMPTY_PRODUCT);
     };
 
     const handleChange = (e) => {
@@ -36,7 +36,7 @@ export default function AddForm() {
             <div className="input-fields">
                 <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder="nom"></input>
                 <input name="imageSource" value={newProduct.imageSource} type="text" onChange={handleChange} placeholder="imageURL" />
-                <input name="price" value={newProduct.price ? newProduct.price : ""} type="text" onChange={handleChange} placeholder="price" />
+                <input name="price" value={newProduct.price ? newProduct.price : ""} type="text" onChange={handleChange} placeholder="prix" />
             </div>
             <button className="submit-button">Submit button</button>
         </AddFormStyled>

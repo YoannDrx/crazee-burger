@@ -1,7 +1,3 @@
-import React from 'react'
-
-export default function Editform() {
-  return (
-    <div>EditAdmin</div>
-  )
+export default function EditForm() {
+  return <div>EditForm</div>
 }

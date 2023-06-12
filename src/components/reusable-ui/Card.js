@@ -10,7 +10,7 @@ export default function Card({ title, imageSource, leftDescription, onClick }) {
 
     return (
         <CardStyled className="produit">
-            {isModeAdmin && <TiDelete className="delete-icon" onClick={onClick} />}
+            {isModeAdmin && <button className="delete-icon"><TiDelete className="icon"  onClick={onClick} /></button>}
             <div className="image">
                 <img src={imageSource} alt={title} />
             </div>
@@ -41,11 +41,13 @@ const CardStyled = styled.div`
 
     .delete-icon {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
         font-size: ${theme.fonts.size.P3};
         color: ${theme.colors.primary};
         cursor: pointer;
+        background: none;
+        border: none;
 
         &:hover {
             color: red;

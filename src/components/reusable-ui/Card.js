@@ -4,10 +4,13 @@ import PrimaryButton from "./PrimaryButton";
 import { TiDelete } from "react-icons/ti";
 
 export default function Card({ title, imageSource, leftDescription, onDelete, hasDeleteButton }) {
-
     return (
         <CardStyled className="produit">
-            {hasDeleteButton && <button className="delete-icon" onClick={onDelete}><TiDelete className="icon"/></button>}
+            {hasDeleteButton && (
+                <button className="delete-icon" onClick={onDelete}>
+                    <TiDelete className="icon" />
+                </button>
+            )}
             <div className="image">
                 <img src={imageSource} alt={title} />
             </div>
@@ -45,9 +48,21 @@ const CardStyled = styled.div`
         cursor: pointer;
         background: none;
         border: none;
+        padding: 0;
+        background: none;
+        border: none;
 
-        &:hover {
-            color: red;
+        .icon {
+            height: 100%;
+            width: 100%;
+
+            :hover {
+                color: red;
+            }
+
+            :active {
+                color: ${theme.colors.primary};
+            }
         }
     }
 

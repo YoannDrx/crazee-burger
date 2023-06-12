@@ -1,111 +1,103 @@
-import React, { useContext, useState } from "react";
-import styled from "styled-components";
-import OrderContext from "../../../../../../../context/OrderContext";
-import { FiCheck } from "react-icons/fi";
+import { useContext, useState } from "react"
+import styled from "styled-components"
+import OrderContext from "../../../../../../../context/OrderContext"
 
-const EMPTY_PRODUCT = {
-    id: "",
-    title: "Nom du produit (ex : Super Burger)",
-    imageSource: "Lien URL d'une image (ex : http://www.mon-produit.fr",
-    price: 0,
-};
+import TextInput from "../../../../../../reusable-ui/TextInput"
+import Button from "../../../../../../reusable-ui/Button"
+import ImagePreview from "./ImagePreview"
+import SubmitMessage from "./SubmitMessage"
+import { getInputTextsConfig } from "./inputTextConfig"
+
+export const EMPTY_PRODUCT = {
+  id: "",
+  title: "",
+  imageSource: "",
+  price: 0,
+}
 
 export default function AddForm() {
-    const { handleAdd } = useContext(OrderContext);
-    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-    const [isSubmited, setIsSbumited] = useState(false);
+  // state
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  // comportements
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+    }
 
-        const newProductToAdd = {
-            ...newProduct,
-            id: new Date().getTime(),
-        };
+    handleAdd(newProductToAdd)
+    setNewProduct(EMPTY_PRODUCT)
 
-        handleAdd(newProductToAdd);
-        setNewProduct(EMPTY_PRODUCT);
-        displaySuccesMessage();
-    };
+    displaySuccessMessage()
+  }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewProduct({ ...newProduct, [name]: value });
-    };
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setNewProduct({ ...newProduct, [name]: value })
+  }
 
-    const displaySuccesMessage = () => {
-        setIsSbumited(true);
-        setTimeout(() => {
-            setIsSbumited(false);
-        }, 2000);
-    };
+  const displaySuccessMessage = () => {
+    setIsSubmitted(true)
+    setTimeout(() => {
+      setIsSubmitted(false)
+    }, 2000)
+  }
 
-    return (
-        <AddFormStyled onSubmit={handleSubmit}>
-            <div className="image-preview">{newProduct.imageSource ? <img src={newProduct.imageSource} alt={newProduct.title} /> : <div>Aucune Image</div>}</div>
-            <div className="input-fields">
-                <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder="Nom du produit (ex : Super Burger)"></input>
-                <input name="imageSource" value={newProduct.imageSource} type="text" onChange={handleChange} placeholder="Lien URL d'une image (ex : http://www.mon-produit.fr" />
-                <input name="price" value={newProduct.price ? newProduct.price : ""} type="text" onChange={handleChange} placeholder="prix" />
-            </div>
-            <div className="submit">
-                <button className="submit-button">Submit button</button>
-                {isSubmited && (
-                    <div className="submit-message">
-                        <span>
-                            <FiCheck />
-                            Ajouté avec succès !
-                        </span>
-                    </div>
-                )}
-            </div>
-        </AddFormStyled>
-    );
+  const inputTexts = getInputTextsConfig(newProduct)
+
+  // affichage
+  return (
+    <AddFormStyled onSubmit={handleSubmit}>
+      <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
+      <div className="input-fields">
+        {inputTexts.map((input) => (
+          <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist" />
+        ))}
+      </div>
+      <div className="submit">
+        <Button
+          className="submit-button"
+          label={"Ajouter un nouveau produit au menu"}
+          version="success"
+        />
+        {isSubmitted && <SubmitMessage />}
+      </div>
+    </AddFormStyled>
+  )
 }
 
 const AddFormStyled = styled.form`
-    border: 3px solid red;
+  /* border: 2px solid black; */
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
+
+  .input-fields {
+    /* background: blue; */
+    grid-area: 1 / 2 / -2 / 3;
+
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(4, 1fr);
-    height: 100%;
-    width: 70%;
+    grid-row-gap: 8px;
+  }
 
-    .image-preview {
-        background: red;
-        grid-area: 1 / 1 / -2 / -2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .submit {
+    /* background: green; */
+    grid-area: 4 / -2 / -1 / -1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 3px;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
+    .submit-button {
+      /* width: 50%; */
+      height: 100%;
     }
-
-    .input-fields {
-        background: blue;
-        grid-area: 1 / 2 / -2 / -2;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-    }
-
-    .submit {
-        background: green;
-        grid-area: 4 / 2 / -1 / -2;
-        display: flex;
-        align-items: center;
-
-        .submit-button {
-            width: 50%;
-        }
-
-        .submit-message {
-            background: yellow;
-        }
-    }
-`;
+  }
+`

@@ -8,14 +8,17 @@ import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 
 export default function EditForm() {
-    const { productSelected } = useContext(OrderContext);
-    const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT);
+    const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext);
+    const [productBeingEdited ] = useState(EMPTY_PRODUCT);
 
     const inputTexts = getInputTextsConfig(productSelected);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setProductBeingEdited({ ...productBeingEdited, [name]: value });
+        const productBeingUpdated = { ...productSelected, [name]: value };
+        
+        setProductSelected(productBeingUpdated);
+        handleEdit(productBeingUpdated);
     };
 
     return (

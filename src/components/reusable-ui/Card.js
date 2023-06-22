@@ -4,6 +4,11 @@ import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
 
 export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected }) {
+    // state (vide)
+
+    // comportements (vide)
+
+    // affichage
     return (
         <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
             <div className="card">
@@ -21,7 +26,7 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
                     <div className="description">
                         <div className="left-description">{leftDescription}</div>
                         <div className="right-description">
-                            <Button className="primary-button" label={"Ajouter"} />
+                            <Button className="primary-button" label={"Ajouter"} onClick={(event) => event.stopPropagation()}/>
                         </div>
                     </div>
                 </div>
@@ -31,8 +36,9 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 }
 
 const CardStyled = styled.div`
-    ${({ isHoverable }) => isHoverable && hoverabalStyled}
+    ${({ isHoverable }) => isHoverable && hoverableStyle}
     border-radius: ${theme.borderRadius.extraRound};
+    height: 330px;
 
     .card {
         background: ${theme.colors.white};
@@ -139,34 +145,33 @@ const CardStyled = styled.div`
                 }
             }
         }
-        ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyled}
+
+        ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
     }
 `;
 
-const hoverabalStyled = css`
+const hoverableStyle = css`
     :hover {
         transform: scale(1.05);
-        transition: transform 0.3s ease-in-out;
-        box-shadow: ${theme.shadows.orangeHighliht};
+        transition: ease-out 0.4s;
+        box-shadow: ${theme.shadows.orangeHighlight};
         cursor: pointer;
     }
 `;
 
-const selectedStyled = css`
-    background: ${theme.colors.orange};
-
+const selectedStyle = css`
+    background: ${theme.colors.primary};
     .primary-button {
         color: ${theme.colors.primary};
         background-color: ${theme.colors.white};
         border: 1px solid ${theme.colors.white};
-        transition: all 0.2s ease-in-out;
+        transition: all 200ms ease-out;
         :hover {
             color: ${theme.colors.white};
             background-color: ${theme.colors.primary};
-            border: 1px solid ${theme.colors.primary};
-            transition: all 0.2s ease-in-out;
+            border: 1px solid ${theme.colors.white};
+            transition: all 200ms ease-out;
         }
-
         :active {
             background-color: ${theme.colors.white};
             color: ${theme.colors.primary};
@@ -179,35 +184,33 @@ const selectedStyled = css`
         }
 
         &.with-focus {
-            border: 1px solid ${theme.colors.white};
+            border: 1px solid white;
+            background-color: ${theme.colors.white};
             color: ${theme.colors.primary};
-
             :hover {
                 color: ${theme.colors.white};
                 background-color: ${theme.colors.primary};
                 border: 1px solid ${theme.colors.white};
-                border: 1px solid ${theme.colors.white};
             }
-
             :active {
                 background-color: ${theme.colors.white};
                 color: ${theme.colors.primary};
             }
         }
+    }
 
-        .delete-button {
+    .delete-button {
+        color: ${theme.colors.white};
+
+        :active {
             color: ${theme.colors.white};
-
-            :active {
-                color: ${theme.colors.white};
-            }
         }
+    }
 
-        .text-info {
-            .description {
-                .left-description {
-                    color: ${theme.colors.white};
-                }
+    .text-info {
+        .description {
+            .left-description {
+                color: ${theme.colors.white};
             }
         }
     }

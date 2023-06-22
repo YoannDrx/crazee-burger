@@ -5,8 +5,8 @@ import { TiDelete } from "react-icons/ti";
 
 export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected }) {
     return (
-        <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
-            <div className="card" style={isSelected ? {background: "orange"} : {}}>
+        <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+            <div className="card">
                 {hasDeleteButton && (
                     <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
                         <TiDelete className="icon" />
@@ -31,7 +31,7 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 }
 
 const CardStyled = styled.div`
-    ${(props) => props.isHoverable && hoverabalStyled}
+    ${({ isHoverable }) => isHoverable && hoverabalStyled}
     border-radius: ${theme.borderRadius.extraRound};
 
     .card {
@@ -139,6 +139,7 @@ const CardStyled = styled.div`
                 }
             }
         }
+        ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyled}
     }
 `;
 
@@ -148,5 +149,66 @@ const hoverabalStyled = css`
         transition: transform 0.3s ease-in-out;
         box-shadow: ${theme.shadows.orangeHighliht};
         cursor: pointer;
+    }
+`;
+
+const selectedStyled = css`
+    background: ${theme.colors.orange};
+
+    .primary-button {
+        color: ${theme.colors.primary};
+        background-color: ${theme.colors.white};
+        border: 1px solid ${theme.colors.white};
+        transition: all 0.2s ease-in-out;
+        :hover {
+            color: ${theme.colors.white};
+            background-color: ${theme.colors.primary};
+            border: 1px solid ${theme.colors.primary};
+            transition: all 0.2s ease-in-out;
+        }
+
+        :active {
+            background-color: ${theme.colors.white};
+            color: ${theme.colors.primary};
+        }
+
+        &.is-disabled {
+            opacity: 50%;
+            cursor: not-allowed;
+            z-index: 2;
+        }
+
+        &.with-focus {
+            border: 1px solid ${theme.colors.white};
+            color: ${theme.colors.primary};
+
+            :hover {
+                color: ${theme.colors.white};
+                background-color: ${theme.colors.primary};
+                border: 1px solid ${theme.colors.white};
+                border: 1px solid ${theme.colors.white};
+            }
+
+            :active {
+                background-color: ${theme.colors.white};
+                color: ${theme.colors.primary};
+            }
+        }
+
+        .delete-button {
+            color: ${theme.colors.white};
+
+            :active {
+                color: ${theme.colors.white};
+            }
+        }
+
+        .text-info {
+            .description {
+                .left-description {
+                    color: ${theme.colors.white};
+                }
+            }
+        }
     }
 `;

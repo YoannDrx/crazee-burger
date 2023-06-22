@@ -3,10 +3,10 @@ import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected }) {
     return (
         <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
-            <div className="card">
+            <div className="card" style={isSelected ? {background: "orange"} : {}}>
                 {hasDeleteButton && (
                     <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
                         <TiDelete className="icon" />
@@ -31,9 +31,8 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 }
 
 const CardStyled = styled.div`
-${(props) => props.isHoverable && hoverabalStyled }
-border-radius: ${theme.borderRadius.extraRound};
-
+    ${(props) => props.isHoverable && hoverabalStyled}
+    border-radius: ${theme.borderRadius.extraRound};
 
     .card {
         background: ${theme.colors.white};
@@ -144,9 +143,10 @@ border-radius: ${theme.borderRadius.extraRound};
 `;
 
 const hoverabalStyled = css`
-:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: ${theme.shadows.orangeHighliht};
-    cursor: pointer;
-}`
+    :hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: ${theme.shadows.orangeHighliht};
+        cursor: pointer;
+    }
+`;

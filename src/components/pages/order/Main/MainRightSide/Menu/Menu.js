@@ -23,11 +23,15 @@ export default function Menu() {
     }
 
     const handleClick = (idProductClicked) => {
+        if (!isModeAdmin) return;
         const productClickedOn = menu.find((product) => product.id === idProductClicked);
         setProductSelected(productClickedOn);
     };
 
-   
+    const handleCardDelete = (event,id) => {
+        event.stopPropagation(id);
+        handleDelete(id)
+    };
 
     return (
         <MenuStyled className="menu">
@@ -39,7 +43,7 @@ export default function Menu() {
                         imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
                         leftDescription={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
-                        onDelete={() => handleDelete(id)}
+                        onDelete={(event) => handleCardDelete(event,id)}
                         onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
                         isSelected={isModeAdmin && checkIfProductIsClicked(id, productSelected.id)}

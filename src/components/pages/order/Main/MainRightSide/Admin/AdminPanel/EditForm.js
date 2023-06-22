@@ -6,8 +6,7 @@ import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 
 export default function EditForm() {
-    const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext);
-
+    const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext);
     const inputTexts = getInputTextsConfig(productSelected);
 
     const handleChange = (event) => {
@@ -23,7 +22,7 @@ export default function EditForm() {
             <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => (
-                    <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist" />
+                    <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist"  ref={input.name === "title" ? titleEditRef : null}/>
                 ))}
             </div>
         </EditFormStyled>

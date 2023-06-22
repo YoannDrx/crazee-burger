@@ -6,11 +6,12 @@ import { formatPrice } from "../../../../../../utils/maths";
 import Card from "../../../../../reusable-ui/Card";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-    const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext);
+    const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected } = useContext(OrderContext);
     // state
 
     // comportements
@@ -26,6 +27,8 @@ export default function Menu() {
         setProductSelected(productClickedOn);
     };
 
+   
+
     return (
         <MenuStyled className="menu">
             {menu.map(({ id, title, imageSource, price }) => {
@@ -37,9 +40,9 @@ export default function Menu() {
                         leftDescription={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={() => handleDelete(id)}
-                        onClick={()=> handleClick(id)}
+                        onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
-                        isSelected={true}
+                        isSelected={isModeAdmin && checkIfProductIsClicked(id, productSelected.id)}
                     />
                 );
             })}

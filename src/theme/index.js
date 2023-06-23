@@ -52,7 +52,7 @@ const colors = {
     },
 
     family: {
-      stylish: "Amatic SC, cursive",
+      stylish: `'Amatic SC', cursive`,
     }
   }
   const gridUnit = 8

@@ -6,43 +6,43 @@ import Button from "../../../../../../reusable-ui/Button";
 import SubmitMessage from "./SubmitMessage";
 
 export default function AddForm() {
-	// state
-	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-	const [isSubmitted, setIsSubmitted] = useState(false);
+    // state
+    const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-	// comportements
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const newProductToAdd = {
-			...newProduct,
-			id: crypto.randomUUID(),
-		};
+    // comportements
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const newProductToAdd = {
+            ...newProduct,
+            id: crypto.randomUUID(),
+        };
 
-		handleAdd(newProductToAdd);
-		setNewProduct(EMPTY_PRODUCT);
+        handleAdd(newProductToAdd);
+        setNewProduct(EMPTY_PRODUCT);
 
-		displaySuccessMessage();
-	};
+        displaySuccessMessage();
+    };
 
-	const handleChange = (event) => {
-		const { name, value } = event.target;
-		setNewProduct({ ...newProduct, [name]: value });
-	};
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setNewProduct({ ...newProduct, [name]: value });
+    };
 
-	const displaySuccessMessage = () => {
-		setIsSubmitted(true);
-		setTimeout(() => {
-			setIsSubmitted(false);
-		}, 2000);
-	};
+    const displaySuccessMessage = () => {
+        setIsSubmitted(true);
+        setTimeout(() => {
+            setIsSubmitted(false);
+        }, 2000);
+    };
 
-	// affichage
-	return (
-		<Form onSunbmit={handleSubmit} onChange={handleChange} product={newProduct} isSubmitted={isSubmitted}>
-			<>
-				<Button className="submit-button" label={"Ajouter un nouveau produit au menu"} version="success" />
-				{isSubmitted && <SubmitMessage />}
-			</>
-		</Form>
-	);
+    // affichage
+    return (
+        <Form onSunbmit={handleSubmit} onChange={handleChange} product={newProduct} isSubmitted={isSubmitted}>
+            <>
+                <Button className="submit-button" label={"Ajouter un nouveau produit au menu"} version="success"/>
+                {isSubmitted && <SubmitMessage />}
+            </>
+        </Form>
+    );
 }

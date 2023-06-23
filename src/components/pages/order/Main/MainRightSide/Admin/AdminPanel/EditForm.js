@@ -1,10 +1,10 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../../../context/OrderContext";
 import { getInputTextsConfig } from "./inputTextConfig";
 import styled from "styled-components";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
-import { theme } from "../../../../../../../theme";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
     const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext);
@@ -13,7 +13,7 @@ export default function EditForm() {
     const handleChange = (event) => {
         const { name, value } = event.target;
         const productBeingUpdated = { ...productSelected, [name]: value };
-        
+
         setProductSelected(productBeingUpdated);
         handleEdit(productBeingUpdated);
     };
@@ -23,10 +23,12 @@ export default function EditForm() {
             <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => (
-                    <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist"  ref={input.name === "title" ? titleEditRef : null}/>
+                    <TextInput {...input} key={input.id} onChange={handleChange} version="minimalist" ref={input.name === "title" ? titleEditRef : null} />
                 ))}
             </div>
-            <div className="submit"><span className="sentence">Cliquer sur un produit du menu pour le modifier{" "}<span className="live-update">en temps réel</span></span></div>
+            <div className="submit">
+                <EditInfoMessage />
+            </div>
         </EditFormStyled>
     );
 }
@@ -56,13 +58,5 @@ const EditFormStyled = styled.form`
         align-items: center;
         position: relative;
         top: 3px;
-
-        .sentence {
-            color: ${theme.colors.primary};
-            font-size: ${theme.fonts.size.SM};
-            .live-update{
-                text-decoration: underline;
-            }
-        }
     }
 `;

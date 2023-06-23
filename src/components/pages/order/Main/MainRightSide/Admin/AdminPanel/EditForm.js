@@ -1,25 +1,29 @@
-import { useContext } from "react";
-import OrderContext from "../../../../../../../context/OrderContext";
-import EditInfoMessage from "./EditInfoMessage";
-import Form from "./Form";
+import { useContext } from "react"
+import OrderContext from "../../../../../../../context/OrderContext"
+import Form from "./Form"
+import EditInfoMessage from "./EditInfoMessage"
 
 export default function EditForm() {
-	// state
-	const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext);
+  // state
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
 
-	// comportements
-	const handleChange = (event) => {
-		const { name, value } = event.target;
-		const productBeingUpdated = { ...productSelected, [name]: value };
+  // comportements (gestionnaires d'événement ou "event handlers")
+  const handleChange = (event) => {
+    const { name, value } = event.target
 
-		setProductSelected(productBeingUpdated);
-		handleEdit(productBeingUpdated);
-	};
+    const productBeingUpdated = {
+      ...productSelected,
+      [name]: value,
+    }
 
-	//affichage
-	return (
-		<Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
-			<EditInfoMessage />
-		</Form>
-	);
+    setProductSelected(productBeingUpdated) // cette ligne update le formulaire
+    handleEdit(productBeingUpdated, event) // cette ligne update le menu
+  }
+
+  // affichage
+  return (
+    <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+      <EditInfoMessage />
+    </Form>
+  )
 }

@@ -4,37 +4,31 @@ import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 
-const Form = React.forwardRef(
-	({ product, onSubmit, onChange, isSubmitted, QUELQUECHOSE }, ref) => {
-		// state
+const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) => {
+	// state
 
-		// comportements
+	// comportements
+	const inputTexts = getInputTextsConfig(product);
 
-		const inputTexts = getInputTextsConfig(product);
-
-		// affichage
-		return (
-			<FormStyled onSubmit={onSubmit}>
-				<ImagePreview
-					imageSource={product.imageSource}
-					title={product.title}
-				/>
-				<div className="input-fields">
-					{inputTexts.map((input) => (
-						<TextInput
-							{...input}
-							key={input.id}
-							onChange={onChange}
-							version="minimalist"
-							ref={ref && input.name === "title" ? ref : null}
-						/>
-					))}
-				</div>
-				<div className="submit">{QUELQUECHOSE}</div>
-			</FormStyled>
-		);
-	}
-);
+	// affichage
+	return (
+		<FormStyled onSubmit={onSubmit}>
+			<ImagePreview imageSource={product.imageSource} title={product.title} />
+			<div className="input-fields">
+				{inputTexts.map((input) => (
+					<TextInput
+						{...input}
+						key={input.id}
+						onChange={onChange}
+						version="minimalist"
+						ref={ref && input.name === "title" ? ref : null}
+					/>
+				))}
+			</div>
+			<div className="submit">{children}</div>
+		</FormStyled>
+	);
+});
 
 export default Form;
 

@@ -38,21 +38,11 @@ export default function AddForm() {
 
 	// affichage
 	return (
-		<Form
-			onSunbmit={handleSubmit}
-			onChange={handleChange}
-			product={newProduct}
-			isSubmitted={isSubmitted}
-			QUELQUECHOSE={
-				<>
-					<Button
-						className="submit-button"
-						label={"Ajouter un nouveau produit au menu"}
-						version="success"
-					/>
-					{isSubmitted && <SubmitMessage />}
-				</>
-			}
-		/>
+		<Form onSunbmit={handleSubmit} onChange={handleChange} product={newProduct} isSubmitted={isSubmitted}>
+			<>
+				<Button className="submit-button" label={"Ajouter un nouveau produit au menu"} version="success" />
+				{isSubmitted && <SubmitMessage />}
+			</>
+		</Form>
 	);
 }

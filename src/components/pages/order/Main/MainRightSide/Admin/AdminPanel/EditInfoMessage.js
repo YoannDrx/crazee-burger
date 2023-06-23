@@ -10,11 +10,9 @@ export default function EditInfoMessage() {
 }
 
 const EditInfoMessageStyled = styled.span`
-    .sentence {
-        color: ${theme.colors.primary};
-        font-size: ${theme.fonts.size.SM};
-        .live-update {
-            text-decoration: underline;
-        }
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.SM};
+    .live-update {
+        text-decoration: underline;
     }
 `;

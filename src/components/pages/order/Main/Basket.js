@@ -1,27 +1,33 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { theme } from "../../../../theme";
 
 export default function Basket() {
-  return <BasketStyled>
-    <div className="head">Head</div>
-    <div className="body">Body</div>
-    <div className="footer">Footer</div>
-  </BasketStyled>
+	return (
+		<BasketStyled>
+			<div className="head">Head</div>
+			<div className="body">Body</div>
+			<div className="footer">Footer</div>
+		</BasketStyled>
+	);
 }
 
 const BasketStyled = styled.div`
-  background: pink;
-  display: flex;
-  flex-direction: column;
+	background: pink;
+	display: flex;
+	flex-direction: column;
 
-  .head{
-    border: 3px solid red;
-  }
+	.head {
+		height: 70px;
+		background: ${theme.colors.background_dark};
+	}
 
-  .body{
-    border: 3px solid blue;
-  }
+	.body {
+		flex: 1;
+    background: ${theme.colors.background_white};
+	}
 
-  .footer{
-    border: 3px solid green;
-  }
-`
+	.footer {
+		height: 70px;
+		background: ${theme.colors.background_dark};
+	}
+`;

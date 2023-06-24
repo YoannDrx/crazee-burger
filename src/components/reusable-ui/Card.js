@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected }) {
+export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected,onAdd }) {
     // state (vide)
 
     // comportements (vide)
@@ -26,7 +26,7 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
                     <div className="description">
                         <div className="left-description">{leftDescription}</div>
                         <div className="right-description">
-                            <Button className="primary-button" label={"Ajouter"} onClick={(event) => event.stopPropagation()}/>
+                            <Button className="primary-button" label={"Ajouter"} onClick={onAdd}/>
                         </div>
                     </div>
                 </div>

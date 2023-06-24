@@ -2,15 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function BasketBody() {
+export default function EmptyBasketBody() {
 	return (
-		<BasketBodyStyled>
+		<EmptyBasketBodyStyled>
 			<span className="empty-message">Votre commande est vide.</span>
-		</BasketBodyStyled>
+		</EmptyBasketBodyStyled>
 	);
 }
 
-const BasketBodyStyled = styled.div`
+const EmptyBasketBodyStyled = styled.div`
 	flex: 1;
 	background: ${theme.colors.background_white};
 	box-shadow: ${theme.shadows.basket};

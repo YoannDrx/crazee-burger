@@ -138,6 +138,7 @@ export const LARGE = [
 export const LARGE_WEIRD = [
   {
     ...EMPTY_PRODUCT,
+    quantity: 1,
   },
   {
     id: "1",

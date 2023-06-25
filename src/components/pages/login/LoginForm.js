@@ -9,7 +9,7 @@ import { theme } from "../../../theme"
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("Bob")
+  const [inputValue, setInputValue] = useState("")
   const navigate = useNavigate()
 
   // comportements

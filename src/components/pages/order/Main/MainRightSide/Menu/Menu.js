@@ -49,7 +49,7 @@ export default function Menu() {
     handleDelete(idProductToDelete)
     handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    titleEditRef.current.focus()
+    titleEditRef.current && titleEditRef.current.focus()
   }
 
   const handleAddButton = (event, idProductToAdd) => {

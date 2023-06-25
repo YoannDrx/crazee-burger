@@ -9,11 +9,12 @@ import { theme } from "../../../theme"
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState("Bob")
   const navigate = useNavigate()
 
   // comportements
   const handleSubmit = (event) => {
+    console.log("submitted")
     event.preventDefault()
     setInputValue("")
     navigate(`order/${inputValue}`)

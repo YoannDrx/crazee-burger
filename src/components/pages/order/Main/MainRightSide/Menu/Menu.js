@@ -8,7 +8,8 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
-import { find } from "../../../../../../utils/array"
+import { findObjectById, isEmpty } from "../../../../../../utils/array"
+
 
 export default function Menu() {
   const {
@@ -33,13 +34,13 @@ export default function Menu() {
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
     //const productClickedOn = menu.find((product) => product.id === idProductClicked)
-    const productClickedOn = find(idProductClicked, menu)
+    const productClickedOn = findObjectById(idProductClicked, menu)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
 
   // affichage
-  if (menu.length === 0) {
+  if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu} />
   }
@@ -55,7 +56,7 @@ export default function Menu() {
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
     //const productToAdd = menu.find((menuProduct) => menuProduct.id === idProductToAdd)
-    const productToAdd = find(idProductToAdd, menu)
+    const productToAdd = findObjectById(idProductToAdd, menu)
     handleAddToBasket(productToAdd)
   }
 

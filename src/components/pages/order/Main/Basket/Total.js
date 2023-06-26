@@ -3,12 +3,13 @@ import { theme } from "../../../../../theme"
 import Header from "../../../../reusable-ui/Header"
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { calculateSumTopay, formatPrice } from "../../../../../utils/maths";
+import { formatPrice } from "../../../../../utils/maths";
+import { calculateSumToPay } from "./helper";
 
 export default function Total() {
   const { basket, menu } = useContext(OrderContext);
 
-  const sumToPay = calculateSumTopay(basket, menu);
+  const sumToPay = calculateSumToPay(basket, menu);
 
 
   return (

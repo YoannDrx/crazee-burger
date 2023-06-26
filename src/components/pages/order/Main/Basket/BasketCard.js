@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../theme"
 import { formatPrice } from "../../../../../utils/maths"
@@ -14,7 +14,7 @@ export default function BasketCard({
   onDelete,
 }) {
   return (
-    <BasketCardStyled className={className} isModeAdmin={isClickable}>
+    <BasketCardStyled className={className} isClickable={isClickable}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>

@@ -1,14 +1,13 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import Button from "../../../../../reusable-ui/Button"
-import { fakeMenu } from "../../../../../../fakeData/fakeMenu"
 
 export default function EmptyMenuAdmin({ onReset }) {
   return (
     <EmptyMenuStyled>
       <span className="title">Le menu est vide ?</span>
       <span className="description">Cliquez ci-dessous pour le réinitialiser</span>
-      <Button label={"Générer de nouveaux produits"} onClick={()=> onReset(fakeMenu.MEDIUM)} />
+      <Button label={"Générer de nouveaux produits"} onClick={onReset} />
     </EmptyMenuStyled>
   )
 }

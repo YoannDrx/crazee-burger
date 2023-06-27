@@ -1,16 +1,15 @@
+import { useContext } from "react"
 import styled from "styled-components"
+import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
+import { formatPrice } from "../../../../../utils/maths"
 import Header from "../../../../reusable-ui/Header"
-import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
-import { formatPrice } from "../../../../../utils/maths";
-import { calculateSumToPay } from "./helper";
+import { calculateSumToPay } from "./helper"
 
 export default function Total() {
-  const { basket, menu } = useContext(OrderContext);
+  const { basket, menu } = useContext(OrderContext)
 
-  const sumToPay = calculateSumToPay(basket, menu);
-
+  const sumToPay = calculateSumToPay(basket, menu)
 
   return (
     <Header>
@@ -21,7 +20,6 @@ export default function Total() {
     </Header>
   )
 }
-
 
 const TotalStyled = styled.div`
   height: 100%;

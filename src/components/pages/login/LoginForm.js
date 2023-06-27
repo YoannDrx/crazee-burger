@@ -7,7 +7,8 @@ import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
 import { authenticateUser } from "../../../api/user";
-import Welcome from "./welcome";
+import Welcome from "./Welcome";
+
 
 export default function LoginForm() {
 	// state
@@ -31,7 +32,7 @@ export default function LoginForm() {
 	// affichage
 	return (
 		<LoginFormStyled action="submit" onSubmit={handleSubmit}>
-			<Welcome/>
+			<Welcome />
 			<div>
 				<TextInput
 					value={username}

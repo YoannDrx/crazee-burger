@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
@@ -31,15 +31,14 @@ export default function OrderPage() {
 		titleEditRef.current.focus();
 	};
 
-  const initialiseMenu = async() => { 
+  const initialiseMenu = useCallback(async () => {
     const menuReceived = await getMenu(username);
-    console.log("menuReceived >>", menuReceived);
     setMenu(menuReceived);
-   }
-  
-	useEffect(() => {
+  }, [username, setMenu]);
+
+  useEffect(() => {
     initialiseMenu();
-	}, []);
+  }, [initialiseMenu]);
 
 	const orderContextValue = {
 		username,

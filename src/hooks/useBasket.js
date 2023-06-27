@@ -17,7 +17,7 @@ export const useBasket = () => {
     createNewBasketProduct(idProductToAdd, basketCopy, setBasket, username)
   }
 
-  const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy,username) => {
+  const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy, username) => {
     const indexOfBasketProductToIncrement = findIndexById(idProductToAdd, basketCopy)
     basketCopy[indexOfBasketProductToIncrement].quantity += 1
     setBasket(basketCopy)
@@ -32,10 +32,11 @@ export const useBasket = () => {
     setLocalStorage(username, newBasket)
   }
 
-  const handleDeleteBasketProduct = (idBasketProduct) => {
+  const handleDeleteBasketProduct = (idBasketProduct, username) => {
     const basketUpdated = removeObjectById(idBasketProduct, basket)
     setBasket(basketUpdated)
+    setLocalStorage(username, basketUpdated)
   }
 
-  return { basket, setBasket,  handleAddToBasket, handleDeleteBasketProduct }
+  return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct }
 }

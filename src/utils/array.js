@@ -14,9 +14,9 @@ export const removeObjectById = (idOfItemToRemove, array) => {
   return array.filter((item) => item.id !== idOfItemToRemove)
 }
 
-export const isEmpty = (array) => { 
+export const isEmpty = (array) => {
   return array.length === 0
- }
+}
 
 // const fruits = [{ nom: "Abricot" }, { nom: "Banane" }]
 // const fruitsShallowCopy = [...fruits]

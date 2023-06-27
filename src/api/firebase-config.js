@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -8,9 +8,8 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-};
-
+}
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig); // pour se connecter à notre compte firebase
-export const db = getFirestore(app); // pour se connecter à notre BDD firestore
+const app = initializeApp(firebaseConfig) // pour se connecter à notre compte firebase
+export const db = getFirestore(app) // pour se connecter à notre BDD Firestore

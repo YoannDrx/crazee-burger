@@ -11,7 +11,7 @@ import Welcome from "./Welcome"
 
 export default function LoginForm() {
   // state
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("Bob")
   const navigate = useNavigate()
 
   // comportements

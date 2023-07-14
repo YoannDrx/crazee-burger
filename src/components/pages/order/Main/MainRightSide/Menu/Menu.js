@@ -10,7 +10,7 @@ import { checkIfProductIsClicked } from "./helper"
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
 import { isEmpty } from "../../../../../../utils/array"
 import Loader from "./Loader"
-import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import { menuAnimation } from "../../../../../../theme/animations"
 
 export default function Menu() {
@@ -55,7 +55,6 @@ export default function Menu() {
         return (
           <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
             <Card
-              key={id}
               title={title}
               imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
               leftDescription={formatPrice(price)}
@@ -84,5 +83,5 @@ const MenuStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
 
-${menuAnimation}
+  ${menuAnimation}
 `

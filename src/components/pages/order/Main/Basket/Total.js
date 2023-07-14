@@ -5,7 +5,8 @@ import { theme } from "../../../../../theme"
 import { formatPrice } from "../../../../../utils/maths"
 import Header from "../../../../reusable-ui/Header"
 import { calculateSumToPay } from "./helper"
-import { CasinoEffect } from "../../../../reusable-ui/CasinoEffect"
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect"
+
 
 
 

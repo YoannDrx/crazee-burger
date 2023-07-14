@@ -24,5 +24,5 @@ const AdminStyled = styled.div`
   left: 0;
   right: 0;
 
-  animation : ${fadeInFromBottom} ease-out ${theme.animations.speed.slow};
+  animation: ${fadeInFromBottom} ease-out ${theme.animations.speed.slow};
 `

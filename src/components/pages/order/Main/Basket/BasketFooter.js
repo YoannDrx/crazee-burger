@@ -6,14 +6,14 @@ import { theme } from "../../../../../theme";
 export default function BasketFooter() {
 	return (
 		<Header>
-			<FooterStyled>
+			<BasketFooterStyled>
 				<span>Codé avec ❤️ et React.js par <a className="link" href="https://www.yodev.fr/">Yodev</a> </span>
-			</FooterStyled>
+			</BasketFooterStyled>
 		</Header>
 	);
 }
 
-const FooterStyled = styled.div`
+const BasketFooterStyled = styled.div`
 	height: 100%;
 	display: flex;
 	align-items: center;

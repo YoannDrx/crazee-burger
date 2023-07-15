@@ -51,6 +51,19 @@ const FormStyled = styled.form`
 
     display: grid;
     grid-row-gap: 8px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+
+    .title{
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .image-source{
+      grid-area: 2 / 1 / 3 / 4;
+    }
+    .price{
+      grid-area: 3 / 1 / 4 / 2;
+    }
   }
 
   .form-footer {

@@ -76,7 +76,7 @@ const LARGE = [
     title: "Burger Smoke BBQ",
     price: 5.598,
     quantity: 0,
-    isAvailable: false,
+    isAvailable: true,
     isPublicised: false,
   },
   {
@@ -86,7 +86,7 @@ const LARGE = [
     price: 5.4985,
     quantity: 0,
     isAvailable: true,
-    isPublicised: true,
+    isPublicised: false,
   },
   {
     id: "3",
@@ -103,7 +103,7 @@ const LARGE = [
     title: "Coke 25cl",
     price: 3.568,
     quantity: 0,
-    isAvailable: false,
+    isAvailable: true,
     isPublicised: false,
   },
   {
@@ -157,8 +157,8 @@ const LARGE = [
     title: "Glaces artisanales",
     price: 4.678,
     quantity: 0,
-    isAvailable: false,
-    isPublicised: true,
+    isAvailable: true,
+    isPublicised: false,
   },
 ]
 

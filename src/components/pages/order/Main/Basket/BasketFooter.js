@@ -6,8 +6,7 @@ export default function BasketFooter() {
   return (
     <Header>
       <BasketFooterStyled>
-      <span>Codé avec ❤️ et React.js par <a className="link" href="https://www.yodev.fr/">Yodev</a> </span>
-      </BasketFooterStyled>
+      <span>Codé avec ❤️ et React.js par <a className="link" href="https://www.yodev.fr/">Yodev</a> </span>      </BasketFooterStyled>
     </Header>
   )
 }

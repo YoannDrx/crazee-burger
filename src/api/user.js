@@ -29,7 +29,7 @@ export const createUser = async (userId) => {
   }
 
   //setDoc(CACHETTE, NOURRITURE)
-  setDoc(docRef, newUserToCreate)
+  await setDoc(docRef, newUserToCreate)
 
   return newUserToCreate
 }

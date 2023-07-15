@@ -25,8 +25,8 @@ const BasketFooterStyled = styled.div`
     color: ${theme.colors.white};
   }
 
-  .link{
-		text-decoration: none;
-		color: ${theme.colors.primary};
-	}
+  .link {
+    color: ${theme.colors.primary};
+    text-decoration: none;
+  }
 `

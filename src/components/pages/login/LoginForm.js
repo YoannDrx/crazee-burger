@@ -11,13 +11,15 @@ import Welcome from "./Welcome"
 
 export default function LoginForm() {
   // state
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("Bob")
   const navigate = useNavigate()
 
   // comportements
   const handleSubmit = async (event) => {
     event.preventDefault()
+
     const userReceived = await authenticateUser(username)
+
     setUsername("")
     navigate(`order/${userReceived.username}`)
   }

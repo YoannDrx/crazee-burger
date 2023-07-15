@@ -1,6 +1,15 @@
 import { css, keyframes } from "styled-components";
 import { theme } from ".";
 
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 export const fadeInFromBottom = keyframes`
   0% {
     transform: translateY(100%);

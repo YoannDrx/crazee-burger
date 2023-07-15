@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
-import { getInputTextsConfig, getSelectInputsConfig } from "./inputTextConfig";
+import { getInputTextsConfig, getSelectInputsConfig } from "./inputConfig";
 import SelectInput from "../../../../../../reusable-ui/SelectInput";
 
 
@@ -32,7 +32,7 @@ const Form = React.forwardRef(({ product, onSubmit, onChange, onFocus, onBlur, c
 					/>
 				))}
 				{inputSelects.map((inputSelect) => (
-					<SelectInput {...inputSelect} />
+					<SelectInput {...inputSelect} key={inputSelect.id} onChange={onChange}/>
 				))}
 			</div>
 			<div className="form-footer">{children}</div>

@@ -72,10 +72,10 @@ const shadows = {
 }
 
 const animations = {
-  speed : {
+  speed: {
     quick: "300ms",
     slow: "500ms",
-  }
+  },
 }
 
 export const theme = {

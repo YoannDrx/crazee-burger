@@ -10,6 +10,19 @@ export const fadeIn = keyframes`
   }
 `;
 
+export const fadeInFromTop = keyframes`
+  0% {
+    position: absolute;
+    z-index: 1;
+    transform: translateY(-40%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+`;
+
 export const fadeInFromBottom = keyframes`
   0% {
     transform: translateY(100%);

@@ -1,6 +1,7 @@
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
+import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../enums/select"
 
 export const getInputTextsConfig = (newProduct) => [
   {
@@ -34,3 +35,24 @@ export const getInputTextsConfig = (newProduct) => [
     className : "price",
   },
 ]
+
+export const getSelectInputsConfig = (newProduct) => [
+  {
+    id: "3",
+    name: "isAvailable",
+    value: newProduct.isAvailable,
+    Icon: <FaHamburger />,
+    options: isAvailableOptions,
+    className: "is-available",
+  },
+  {
+    id: "4",
+    name: "isPublicised",
+    value: newProduct.isPublicised,
+    Icon: <FaHamburger />,
+    options: isPublicisedOptions,
+    className: "is-publicised",
+  },
+]
+
+
